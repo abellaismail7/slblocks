@@ -1,14 +1,13 @@
 /* MAX LENGTH OF BLOCK */
 #define MAXBLC 50
 
-extern const char BUF [ MAXBLC ];
 #include <stdio.h>
 #include <string.h>
 #include "components.h"
 #include "components/coutil.h"
 static const char unknown_str[] = "n/a";
 
-
+char buf[];
 char* dwm(const char** args){
 	strcpy(buf,args[0]);
 	return buf;

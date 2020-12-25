@@ -1,10 +1,6 @@
-
 #define LEN(x) (sizeof (x) / sizeof *(x))
 
-#ifndef buf
-char buf[1024];
-#endif
-
+extern char buf[1024];
 
 void getcmd(const char* command);
 
