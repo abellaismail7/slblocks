@@ -8,28 +8,23 @@
 static const char unknown_str[] = "n/a";
 
 char buf[];
-char* dwm(const char** args){
-	strcpy(buf,args[0]);
-	return buf;
-}
 
 
-const char* bat_ar[] = { "BAT0","","","","" };
-const char* ipar[] = {"wlp3s0"};
-const char* datear[] = {" %a %b %d %H:%M"};
-const char* mem_ar[] = {""};
 const char* volar[] = {"0","volume"};
 const char* keyar[] = {"0","keytoggle"};
-const char* st1ar[] = {"dwm "};
+const char* st1ar[] = {"0","menu"};
 
 static const Block blocks[] = {
 	/*Func*/			/*ival*/	/*Sig*/	/*Argements*/
-	{ battery_perc,		60,           0,	bat_ar					     	},
-	{ free_mem, 		5,            0,	mem_ar							},	
-	{ shell, 			0,            2,	volar							},	
-	{ date,				30,           0,	datear							},
-	{ shell,			0,            3,	keyar							},
-	{ dwm,				1,            0,	st1ar							}
+	{ shell,			0,            4,	st1ar	},
+	{ wifi_signal,		0,            4,	NULL 	},
+	{ battery,			60,           0,	NULL   	},
+	{ free_mem, 		5,            0,	NULL 	},	
+	{ hostname, 		30,           0,	NULL 	},	
+	{ cpu_usage, 		5,            0,	NULL	},	
+	{ shell, 			0,            2,	volar	},	
+	{ datetime,			30,           0,	NULL 	},
+	{ shell,			0,            3,	keyar	}
 };
 
 

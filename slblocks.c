@@ -132,10 +132,18 @@ void writeStatus(){
 		}
 	}
 	*(ststr++) = '\0';	
-
-	XStoreName(dpy, root, output);	
-	XFlush(dpy);	
-
+	if (1) {
+		puts(output);
+		fflush(stdout);
+		if (ferror(stdout))
+			die("puts:");
+	} else {
+		if (XStoreName(dpy, root, output)
+                        < 0) {
+			die("XStoreName: Allocation failed");
+		}
+		XFlush(dpy);
+	}
 }
 
 
@@ -178,13 +186,16 @@ void break_loop(){
 }
 
 int main(){
-     
-
+    int i = system("pidof slblocks | grep -E \"^[0-9]*$\" > /dev/null "); 
+	if(i != 0){
+		puts("only one process is accepted");
+		return 1;
+	}
 	if(!setupSignals()){
 		return 1;
 	}
 	
-	// READY TO alocations HA HA YOOOOO MF HA HA 
+	// READY TO alocations
 	// setup X 
 	if(!setupX()){
 		return 1;

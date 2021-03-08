@@ -5,10 +5,17 @@
  * you could add icon too
  * ***/
 
-char* date(char** args){
-	time_t t ; 
-    time( &t );  
-    struct tm *tmp = localtime( &t );   
-	strftime(buf,80,args[0], tmp);
+
+const char *
+datetime(void)
+{
+	time_t t;
+
+	time(&t);
+	if (!strftime(buf, sizeof(buf), " %a %b %d %H:%M" , localtime(&t))) {
+		warn("strftime: Result string exceeds buffer size");
+		return "";
+	}
+
 	return buf;
 }

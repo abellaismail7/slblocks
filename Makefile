@@ -13,7 +13,7 @@ debug: slblocks
 all: slblocks
 
 COMPATH = components/
-COM = coutil battery ip date memory shell keymap
+COM = coutil battery ip date memory shell keymap loading wifi cpu disk kernel_release hostname
 
 RCOM = $(addprefix $(COMPATH), $(COM) ) 
 
